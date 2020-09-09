@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="titulo">Solicitação de {{descCredito}}</h2>
+    <p>Crédito especial para atender às suas necessidades com taxas de {{taxaCredito}}</p>
+  </div>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row">
+
+    <!-- dados solicitação -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>solicitação do crédito</h3>
+        </div>
+        <div class="card-body" formGroupName="solicitacao">
+          <div class="form-group">
+            <label>Valor do crédito</label>
+            <input class="form-control" type="text" placeholder="valor da parcela" formControlName="valorCredito" currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', align: 'left' }" max="1000000.00">
+          </div>
+          <div class="form-group">
+            <label for="cboQtdeParcelas">Quantidade de parcelas</label>
+            <select class="form-control" id="cboQtdeParcelas" formControlName="qtdeParcelas">
+              <option [ngValue]="undefined" selected>selecione...</option>
+              <option *ngFor="let parcela of parcelas" [value]="parcela" >{{ parcela }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Data do primeiro vencimento</label>
+            <input class="form-control" type="date" placeholder="data do primeiro vencimento" formControlName="dataPrimeiroVencimento">
+          </div>
+          <button type="submit" class="btn btn-padrao" (click)="onSolicitarClick()" [disabled]="desabilitarBotao">solicitar</button>
+
+          <div class="form-group" *ngIf="mostrarBlocoEfetuar">
+            <div style="padding-top: 20px;">
+                <div class="alert alert-success">
+                  <label><strong>Aprovado</strong></label>
+                  <ul>
+                    <li>Valor total do financiamento: R$ {{valorTotalComJurosFormatado}}</li>
+                    <li>Valor do juros: R$ {{valorJurosFormatado}}</li>
+                    <li>Valor da parcela: R$ {{valorParcelaFormatado}}</li>
+                  </ul>
+                </div>
+                <p style="font-size: 10pt;">
+                  <label>* Preencha as informações ao lado para efetuar a solicitação do crédito</label>
+                </p>
+            </div>
+          </div>
+
+          <div class="form-group" *ngIf="mostrarResultadoSolicitacaoErro">
+            <div style="padding-top: 20px;">
+                <div class="alert alert-danger">
+                  <label><strong>Recusado</strong></label>
+                  <ul>
+                    <li *ngFor="let erroVal of errors">{{erroVal}}</li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- dados cliente -->
+    <div class="col-md-6">
+      <div *ngIf="mostrarBlocoEfetuar">
+        <div class="card">
+          <div class="card-header">
+            <h3>dados do cliente</h3>
+          </div>
+          <div class="card-body" formGroupName="dadosCliente">
+            <div class="form-group">
+              <label>nome completo</label>
+              <input class="form-control" type="text" placeholder="nome completo" formControlName="nome">
+            </div>
+            <div class="form-group">
+              <label>celular</label>
+              <input class="form-control" type="text" placeholder="celular" formControlName="celular" [textMask]="{mask: maskCelular, guide: false}">
+            </div>
+            <div class="form-group">
+              <label>e-mail</label>
+              <input class="form-control" type="email" placeholder="e-mail" formControlName="email">
+            </div>
+            <div class="form-group" *ngIf="tipoCredito !== '3'">
+              <label>CPF</label>
+              <input class="form-control" type="text" placeholder="cpf" formControlName="cpf" [textMask]="{mask: maskCpf, guide: false}">
+            </div>
+            <div class="form-group" *ngIf="tipoCredito === '3'">
+              <label>CNPJ</label>
+              <input class="form-control" type="text" placeholder="cnpj" formControlName="cnpj" [textMask]="{mask: maskCnpj, guide: false}">
+            </div>
+            <div class="form-group">
+              <label for="cboEstados">estado</label>
+              <select class="form-control" id="cboEstados" formControlName="uf">
+                <option [ngValue]="undefined" selected>selecione...</option>
+                <option *ngFor="let uf of estadosUf" [value]="uf.sigla" >{{ uf.nome }}</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-padrao" (click)="onEfetuarClick()" [disabled]="desabilitarBotaoEfetuar">efetuar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+<div class="row" *ngIf="mostrarNotificacao">
+  <div class="col-md-12">
+    <div [ngClass]="{ 'notify-success': (notificacao_sucesso), 'notify-error': (notificacao_erro) }">
+      <div class="notify-text">
+          {{notificacao_mensagem}}
+      </div>
+    </div>
+  </div>
+</div>

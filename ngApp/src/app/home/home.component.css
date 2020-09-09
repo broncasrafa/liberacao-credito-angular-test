@@ -1,0 +1,50 @@
+
+.row-box-credito {
+  padding-bottom: 10px;
+}
+
+.box-credito {
+  border: 1px solid rgb(174, 174, 174);
+  padding: 10px;
+}
+
+.box-credito li {
+  font-size: 15px;
+}
+
+.box-credito__titulo {
+  color: #D4AD68;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.box-credito__botao {
+  text-align: center;
+}
+.box-credito__botao .btn-padrao {
+  width: 100%;
+}
+
+.home-titulo {
+  color: #1e2044;
+  font-size: 52px !important;
+  line-height: 56px !important;
+  margin: auto 100px 20px 0px !important;
+}
+
+.home-sub-titulo {
+  margin: auto 100px 0px 0px !important;
+  font-size: 25px;
+  line-height: 55px;
+  color: #9d1047;
+  margin-bottom: 45px;
+  letter-spacing: -.5px;
+}
+
+.home-sub-titulo_2 {
+  margin: auto 100px 40px 0px !important;
+  font-size: 20px;
+  line-height: 55px;
+  margin-bottom: 45px;
+  letter-spacing: -.5px;
+}

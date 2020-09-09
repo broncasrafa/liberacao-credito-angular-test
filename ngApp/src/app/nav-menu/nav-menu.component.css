@@ -1,0 +1,32 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+  color: #1e2044;
+}
+
+.navbar li a {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0;
+  padding: 1.75rem .75rem;
+  color: #1e2044 !important;
+  text-transform: uppercase;
+}
+.navbar li a:hover {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}

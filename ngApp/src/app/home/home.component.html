@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="home-titulo">
+      Crédito especial para atender às suas necessidades
+    </h1>
+    <h3 class="home-sub-titulo">
+      Taxas atrativas, sem entrada e com parcelas que cabem no seu bolso
+    </h3>
+    <h5 class="home-sub-titulo_2">
+      Parcela em até 72x com o 1º vencimento para daqui à 40 dias e não precisa ser cliente do banco
+    </h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 row-box-credito" *ngFor="let linha of listaOpcoesCredito; let i = index;">
+    <div class="box-credito">
+      <span class="box-credito__titulo">{{ linha.descricao }}</span>
+      <ul>
+        <li>Taxa de {{ linha.taxa }}</li>
+      </ul>
+      <div class="box-credito__botao">
+          <button type="button" class="btn btn-padrao" (click)="redirecionarSolicitarCredito(i)">solicitar crédito</button>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="col-md-4 row-box-credito">
+    <div class="box-credito">
+      <span class="box-credito__titulo">Credito Consignado</span>
+      <ul>
+        <li>Taxa de 1% ao mês</li>
+      </ul>
+      <div class="box-credito__botao">
+          <button type="button" class="btn btn-padrao" (click)="redirecionarSolicitarCredito(2)">solicitar crédito</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 row-box-credito">
+    <div class="box-credito">
+      <span class="box-credito__titulo">Credito Pessoa Jurídica</span>
+      <ul>
+        <li>Taxa de 5% ao mês</li>
+      </ul>
+      <div class="box-credito__botao">
+          <button type="button" class="btn btn-padrao" (click)="redirecionarSolicitarCredito(3)">solicitar crédito</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 row-box-credito">
+    <div class="box-credito">
+      <span class="box-credito__titulo">Credito Pessoa Física</span>
+      <ul>
+        <li>Taxa de 3% ao mês</li>
+      </ul>
+      <div class="box-credito__botao">
+          <button type="button" class="btn btn-padrao" (click)="redirecionarSolicitarCredito(4)">solicitar crédito</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 row-box-credito">
+    <div class="box-credito">
+      <span class="box-credito__titulo">Credito Imobiliário</span>
+      <ul>
+        <li>Taxa de 9% ao ano</li>
+      </ul>
+      <div class="box-credito__botao">
+          <button type="button" class="btn btn-padrao" (click)="redirecionarSolicitarCredito(5)">solicitar crédito</button>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+
+
+
+
